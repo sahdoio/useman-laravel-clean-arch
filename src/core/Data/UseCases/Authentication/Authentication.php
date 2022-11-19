@@ -12,17 +12,17 @@ class Authentication implements AuthenticationContract
 {
     /**
      * @param FindUserRepositoryContract $findUserRepository
-     * 
+     *
      */
     public function __construct(
-        private readonly FindUserRepositoryContract $findUserRepository 
+        private readonly FindUserRepositoryContract $findUserRepository
     ) {}
 
     public function exec(AuthenticationInputDto $data): AuthenticationOutputDto
     {
         $user = $this->findUserRepository->findOne(new FindUserRepositoryInputDto(
-            username: $data->username,
-            email: $data->email
+            email: $data->email,
+            username: $data->username
         ));
 
         // password validation

@@ -20,9 +20,7 @@ class AuthenticationController extends Controller implements BaseController
     ) {}
 
     public function handle(Request $request): JsonResponse
-    {        
-        dd($request->all());
-
+    {
         try {
             $validate = Validator::make($request->input(), [
                 'email' => 'required|string',

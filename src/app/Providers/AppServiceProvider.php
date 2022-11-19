@@ -15,8 +15,8 @@ class AppServiceProvider extends ServiceProvider
     {
         // useCases
         $this->app->bind('Core\Domain\UseCases\Authentication\AuthenticationContract', 'Core\Data\UseCases\Authentication\Authentication');
-        
+
         // repositories
-        $this->app->bind('Core\Data\Repositories\User\FindUserRepositoryContract', 'Core\Implementations\Repositories\User\FindUserRepository');        
+        $this->app->bind('Core\Data\Repositories\User\FindUserRepositoryContract', 'Core\Implementations\Repositories\User\FindUserRepository');
     }
 }

@@ -11,7 +11,7 @@ services:
         container_name: useman-nginx
         image: nginx
         ports:
-            - '8080:80'
+            - '8090:80'
         links:
             - useman-php
         volumes:
@@ -36,11 +36,26 @@ services:
         networks:
             - useman-network
 
-    useman-mysql:
-        container_name: useman-mysql
+    useman-db:
+        container_name: useman-db
         image: mysql:8.0
         ports:
-            - '3306:3306'
+            - '3030:3306'
+        volumes:
+            - ./mysql/my.cnf:/etc/mysql/my.cnf
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=useman
+            - MYSQL_USER=admin
+            - MYSQL_PASSWORD=secret
+        networks:
+            - useman-network
+
+    useman-db-test:
+        container_name: useman-db-test
+        image: mysql:8.0
+        ports:
+            - '3331:3308'
         volumes:
             - ./mysql/my.cnf:/etc/mysql/my.cnf
         environment:
